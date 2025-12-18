@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList"></ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu"></ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Payments</h2>
+            
+            <!-- Payment Form (for Staff) -->
+            <div class="data-section" id="paymentFormSection">
+                <h3>Process Payment</h3>
+                <form id="paymentForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookingId">Booking ID</label>
+                            <input type="number" id="bookingId" name="bookingId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" name="amount" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentMethod">Payment Method</label>
+                            <select id="paymentMethod" name="paymentMethod" required>
+                                <option value="">-- Select Method --</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Card">Credit/Debit Card</option>
+                                <option value="Online">Online Transfer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Process Payment</button>
+                        <button type="button" id="loadBookingBtn" class="btn btn-secondary">Load Booking Details</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment History -->
+            <div class="data-section">
+                <h3>Payment History</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Booking ID</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentsBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </main>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Payment Receipt</h3>
+                <button class="modal-close" id="closeReceiptModal">&times;</button>
+            </div>
+            <div class="receipt" id="receiptContent">
+                <div class="receipt-header">
+                    <h3>El Hotel</h3>
+                    <p>15 Corniche El Nil, Garden City, Cairo</p>
+                    <p>Phone: +20 2 2795 1234</p>
+                </div>
+                <div class="receipt-body">
+                    <div class="receipt-row">
+                        <span>Receipt No:</span>
+                        <span id="receiptNo"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Date:</span>
+                        <span id="receiptDate"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Booking ID:</span>
+                        <span id="receiptBookingId"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Payment Method:</span>
+                        <span id="receiptMethod"></span>
+                    </div>
+                    <div class="receipt-row receipt-total">
+                        <span>Total Amount:</span>
+                        <span id="receiptAmount"></span>
+                    </div>
+                </div>
+                <div class="receipt-footer">
+                    <p>Thank you for staying with us!</p>
+                </div>
+            </div>
+            <div class="form-group" style="text-align: center; margin-top: 20px;">
+                <button type="button" id="printReceiptBtn" class="btn btn-primary">Print Receipt</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="Payment.js"></script>
+    <script src="payments.js"></script>
+</body>
+</html>
+

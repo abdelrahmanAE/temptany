@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList">
+                <!-- Navigation populated by JavaScript -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu">
+                <!-- Sidebar populated by JavaScript based on role -->
+            </ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Dashboard</h2>
+            <div id="welcomeMessage" class="welcome-message"></div>
+
+            <div class="stats-grid" id="statsGrid">
+                <!-- Stats populated by JavaScript -->
+            </div>
+
+            <div class="data-section">
+                <h3>Recent Bookings</h3>
+                <table class="data-table" id="recentBookingsTable">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer</th>
+                            <th>Room</th>
+                            <th>Check-In</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentBookingsBody">
+                        <!-- Data populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="Booking.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

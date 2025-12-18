@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-In/Out - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList"></ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu"></ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Check-In / Check-Out Management</h2>
+            
+            <!-- Search Section -->
+            <div class="data-section">
+                <h3>Search Booking</h3>
+                <form id="searchForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="searchBookingId">Booking ID</label>
+                            <input type="number" id="searchBookingId" name="bookingId">
+                        </div>
+                        <div class="form-group">
+                            <label for="searchCustomer">Customer Name</label>
+                            <input type="text" id="searchCustomer" name="customerName">
+                        </div>
+                        <div class="form-group">
+                            <label for="searchRoom">Room Number</label>
+                            <input type="text" id="searchRoom" name="roomNumber">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="button" id="showTodayBtn" class="btn btn-secondary">Today's Check-Ins</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Pending Check-Ins -->
+            <div class="data-section">
+                <h3>Pending Check-Ins</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer</th>
+                            <th>Room</th>
+                            <th>Check-In Date</th>
+                            <th>Check-Out Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkInBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Current Guests (for Check-Out) -->
+            <div class="data-section">
+                <h3>Current Guests (Ready for Check-Out)</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Customer</th>
+                            <th>Room</th>
+                            <th>Check-In Date</th>
+                            <th>Check-Out Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkOutBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </main>
+    </div>
+
+    <!-- Check-In Modal -->
+    <div id="checkInModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Check-In Guest</h3>
+                <button class="modal-close" id="closeCheckInModal">&times;</button>
+            </div>
+            <form id="checkInForm">
+                <input type="hidden" id="checkInBookingId">
+                <div class="form-group">
+                    <label>Booking ID: <span id="modalBookingId"></span></label>
+                </div>
+                <div class="form-group">
+                    <label>Customer: <span id="modalCustomer"></span></label>
+                </div>
+                <div class="form-group">
+                    <label>Room: <span id="modalRoom"></span></label>
+                </div>
+                <div class="form-group">
+                    <label for="checkInNotes">Notes</label>
+                    <textarea id="checkInNotes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Confirm Check-In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Check-Out Modal -->
+    <div id="checkOutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Check-Out Guest</h3>
+                <button class="modal-close" id="closeCheckOutModal">&times;</button>
+            </div>
+            <form id="checkOutForm">
+                <input type="hidden" id="checkOutBookingId">
+                <div class="form-group">
+                    <label>Booking ID: <span id="outModalBookingId"></span></label>
+                </div>
+                <div class="form-group">
+                    <label>Customer: <span id="outModalCustomer"></span></label>
+                </div>
+                <div class="form-group">
+                    <label>Room: <span id="outModalRoom"></span></label>
+                </div>
+                <div class="form-group">
+                    <label>Total Amount: $<span id="outModalAmount"></span></label>
+                </div>
+                <div class="form-group">
+                    <label for="checkOutNotes">Notes</label>
+                    <textarea id="checkOutNotes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Confirm Check-Out</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="Booking.js"></script>
+    <script src="checkin.js"></script>
+</body>
+</html>
+

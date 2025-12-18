@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html" class="active">Rooms</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="features">
+            <h3>Our Rooms</h3>
+            
+            <!-- Filter Section -->
+            <div class="form-section wide" style="margin-bottom: 30px;">
+                <form id="filterForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkInDate">Check-In Date</label>
+                            <input type="date" id="checkInDate" name="checkInDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOutDate">Check-Out Date</label>
+                            <input type="date" id="checkOutDate" name="checkOutDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="roomType">Room Type</label>
+                            <select id="roomType" name="roomType">
+                                <option value="">All Types</option>
+                                <option value="Single">Single</option>
+                                <option value="Double">Double</option>
+                                <option value="Suite">Suite</option>
+                                <option value="Deluxe">Deluxe</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Search Available Rooms</button>
+                        <button type="button" id="showAllBtn" class="btn btn-secondary">Show All Rooms</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Rooms Grid -->
+            <div class="rooms-grid" id="roomsGrid">
+                <!-- Rooms populated by JavaScript -->
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="Room.js"></script>
+    <script src="rooms.js"></script>
+</body>
+</html>
+

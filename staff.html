@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList"></ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu"></ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Staff Management</h2>
+            
+            <!-- Add Staff Form -->
+            <div class="data-section">
+                <h3>Add New Staff Member</h3>
+                <form id="staffForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Position</label>
+                            <select id="position" name="position" required>
+                                <option value="">-- Select Position --</option>
+                                <option value="Receptionist">Receptionist</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Housekeeping">Housekeeping</option>
+                                <option value="Maintenance">Maintenance</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="salary">Salary ($)</label>
+                            <input type="number" id="salary" name="salary" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hireDate">Hire Date</label>
+                            <input type="date" id="hireDate" name="hireDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add Staff</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Staff List -->
+            <div class="data-section">
+                <h3>Staff Members</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                            <th>Phone</th>
+                            <th>Hire Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="staffBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </main>
+    </div>
+
+    <!-- Edit Staff Modal -->
+    <div id="editStaffModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Staff Member</h3>
+                <button class="modal-close" id="closeEditModal">&times;</button>
+            </div>
+            <form id="editStaffForm">
+                <input type="hidden" id="editStaffId">
+                <div class="form-group">
+                    <label for="editFirstName">First Name</label>
+                    <input type="text" id="editFirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editLastName">Last Name</label>
+                    <input type="text" id="editLastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPhone">Phone</label>
+                    <input type="tel" id="editPhone">
+                </div>
+                <div class="form-group">
+                    <label for="editPosition">Position</label>
+                    <select id="editPosition" required>
+                        <option value="Receptionist">Receptionist</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Housekeeping">Housekeeping</option>
+                        <option value="Maintenance">Maintenance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editSalary">Salary ($)</label>
+                    <input type="number" id="editSalary" step="0.01">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="staff.js"></script>
+</body>
+</html>
+

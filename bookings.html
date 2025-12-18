@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList"></ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu"></ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Room Bookings</h2>
+            
+            <!-- Booking Form -->
+            <div class="data-section">
+                <h3>📅 Book a Room</h3>
+                <p style="margin-bottom: 20px; color: #666;">Step 1: Select your dates → Step 2: Check availability → Step 3: Choose a room → Step 4: Book!</p>
+                <form id="bookingForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkInDate">Check-In Date *</label>
+                            <input type="date" id="checkInDate" name="checkInDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOutDate">Check-Out Date *</label>
+                            <input type="date" id="checkOutDate" name="checkOutDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="button" id="checkAvailability" class="btn btn-secondary">🔍 Check Availability</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 2;">
+                            <label for="roomSelect">Select Room *</label>
+                            <select id="roomSelect" name="roomId" required>
+                                <option value="">-- First, select dates and check availability --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="notes">Special Requests (optional)</label>
+                            <textarea id="notes" name="notes" rows="2" placeholder="E.g., extra pillows, late check-in, etc."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">✅ Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bookings List -->
+            <div class="data-section">
+                <h3>My Bookings</h3>
+                <table class="data-table" id="bookingsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Room</th>
+                            <th>Check-In</th>
+                            <th>Check-Out</th>
+                            <th>Status</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="Room.js"></script>
+    <script src="Booking.js"></script>
+    <script src="bookings.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - El Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>El Hotel</h1>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list" id="navList"></ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="sidebarMenu"></ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <h2>Reports</h2>
+            
+            <!-- Report Selection -->
+            <div class="data-section">
+                <h3>Generate Report</h3>
+                <form id="reportForm" class="form form-inline">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reportType">Report Type</label>
+                            <select id="reportType" name="reportType" required>
+                                <option value="">-- Select Report --</option>
+                                <option value="occupancy">Occupancy Report</option>
+                                <option value="revenue">Revenue Report</option>
+                                <option value="bookings">Bookings Summary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Generate Report</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Report Results -->
+            <div class="data-section" id="reportResults" style="display: none;">
+                <h3 id="reportTitle">Report Results</h3>
+                
+                <!-- Summary Stats -->
+                <div class="stats-grid" id="reportStats">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <!-- Report Table -->
+                <table class="data-table" id="reportTable">
+                    <thead id="reportTableHead">
+                        <!-- Populated by JavaScript -->
+                    </thead>
+                    <tbody id="reportTableBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="messageBox" class="message-box hidden"></div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 El Hotel. All rights reserved.</p>
+    </footer>
+
+    <script src="ApiService.js"></script>
+    <script src="User.js"></script>
+    <script src="reports.js"></script>
+</body>
+</html>
+
