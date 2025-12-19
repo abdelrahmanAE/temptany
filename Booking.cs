@@ -1,7 +1,7 @@
 namespace HotelAPI.Models
 {
     /// <summary>
-    /// Booking entity - room reservations
+    /// Booking entity - el 7agozat bta3et el owar
     /// </summary>
     public class Booking
     {
@@ -15,12 +15,11 @@ namespace HotelAPI.Models
         public decimal? TotalAmount { get; set; }
         public string? Notes { get; set; }
         
-        // Navigation properties
+        // Navigation properties - de el 3alagat m3 el entities el tanya
         public Customer? Customer { get; set; }
         public Room? Room { get; set; }
         
-        // Computed properties
+        // Computed properties - de bet-7seb 3adad el lyaly
         public int Nights => (CheckOutDate - CheckInDate).Days;
     }
 }
-
