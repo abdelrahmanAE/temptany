@@ -11,7 +11,7 @@ using HotelAPI.DTOs;
 namespace HotelAPI.Controllers
 {
     /// <summary>
-    /// Authentication controller - handles login and registration
+     /// Auth controller - de el bawaba bta3et el dakhla wel khroug (Login & Register)
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
@@ -27,18 +27,18 @@ namespace HotelAPI.Controllers
         }
         
         /// <summary>
-        /// Register a new customer account
+        /// hna bn-register customer gded 3ashan ykon lih account
         /// </summary>
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
-            // Validate input
+            // law msh m-dakhal data kamla, erfa3 el cart el a7mar
             if (string.IsNullOrWhiteSpace(dto.Username) || string.IsNullOrWhiteSpace(dto.Password))
             {
                 return BadRequest(new { message = "Username and password are required" });
             }
             
-            // Check if username exists
+            // check law el username mawgood abl kda
             if (await _context.Users.AnyAsync(u => u.Username == dto.Username))
             {
                 return BadRequest(new { message = "Username already exists" });
