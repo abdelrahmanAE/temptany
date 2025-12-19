@@ -1,25 +1,25 @@
 /**
- * ApiService - Handles all HTTP requests to the backend
+ * ApiService - Handles all HTTP requests to the backend - bt3ml kol el HTTP requests ll backend
  *
  * OOP Concepts Used:
- * - Single Responsibility: Only handles API communication
- * - Facade Pattern: Provides simple interface to complex HTTP operations
- * - Singleton-like: Usually one instance per app
+ * - Single Responsibility: Only handles API communication - msh3ool 3la API communication bs
+ * - Facade Pattern: Provides simple interface to complex HTTP operations - y3ml interface baset ll HTTP operations
+ * - Singleton-like: Usually one instance per app - instance wa7da bs fe kol el app
  */
 class ApiService {
   constructor(baseUrl) {
-    // Base URL for API - change this to your backend URL
-    // Try HTTP first if HTTPS fails (for development)
+    // Base URL for API - change this to your backend URL - el base URL bta3 el API
+    // Try HTTP first if HTTPS fails (for development) - t7awel HTTP 2wl law HTTPS msh shaghal
     this.baseUrl = baseUrl || "http://localhost:5000/api";
     this.httpsUrl = "https://localhost:5001/api";
   }
 
-  // Get auth token from session storage
+  // Get auth token from session storage - tgeeb el token mn sessionStorage
   getAuthToken() {
     return sessionStorage.getItem("authToken");
   }
 
-  // Build headers with authentication
+  // Build headers with authentication - t3ml headers w t7ot el token feha
   getHeaders() {
     const headers = {
       "Content-Type": "application/json",
@@ -33,29 +33,29 @@ class ApiService {
     return headers;
   }
 
-  // Handle API errors consistently
+  // Handle API errors consistently - bt3ml handle ll errors
   handleError(error) {
     console.error("API Error:", error);
     throw error;
   }
 
   // ========================================
-  // Generic HTTP Methods
+  // Generic HTTP Methods - el HTTP methods el 3ama
   // ========================================
 
-  // Generic GET request
+  // Generic GET request - GET request 3ama
   async get(endpoint) {
     try {
-      //    waiting to complete the process
+      // waiting to complete the process - bstna el process y5ls
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
-        // fetching HTTP
+        // fetching HTTP - bgeeb data mn el API
         method: "GET",
         headers: this.getHeaders(),
       });
-      //   3ks al intital boolean value
+      // check el response ok wala la2
       if (!response.ok) {
-        // 200-299
-        const errorData = await response.json().catch(() => ({})); // sent to JSON
+        // law msh 200-299
+        const errorData = await response.json().catch(() => ({})); // convert to JSON
         throw new Error(
           errorData.message || `HTTP error! status: ${response.status}`
         );
@@ -63,13 +63,13 @@ class ApiService {
 
       return await response.json();
     } catch (error) {
-      this.handleError(error); // handling errors to console
+      this.handleError(error); // handling errors to console - t3ml handle ll error
     }
   }
 
-  // Generic POST request
+  // Generic POST request - POST request 3ama
   async post(endpoint, data) {
-    // Try HTTP first, then HTTPS if HTTP fails
+    // Try HTTP first, then HTTPS if HTTP fails - t7awel HTTP 2wl law msh shaghal t7awel HTTPS
     let lastError = null;
 
     for (const baseUrl of [this.baseUrl, this.httpsUrl]) {
@@ -90,19 +90,19 @@ class ApiService {
         return await response.json();
       } catch (error) {
         lastError = error;
-        // If it's a network error, try the other URL
+        // If it's a network error, try the other URL - law network error, t7awel el URL el tany
         if (
           error.message.includes("Failed to fetch") ||
           error.message.includes("NetworkError")
         ) {
           continue;
         }
-        // If it's a business logic error, throw it immediately
+        // If it's a business logic error, throw it immediately - law business logic error, throw error 2wl ma y7sal
         throw error;
       }
     }
 
-    // If both URLs failed, throw the last error
+    // If both URLs failed, throw the last error - law el 2 URLs fe7lo, throw el error
     this.handleError(lastError);
   }
 
